@@ -1,0 +1,12 @@
+- name: "playbook para instalar vários pacotes"
+  hosts: all
+
+  tasks:
+    - name: "Instalar vários pacotes"
+      become: true
+      apt:
+        name: "{{ item }}"
+      loop:
+        - jo
+        - git
+        - wget

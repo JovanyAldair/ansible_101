@@ -1,0 +1,6 @@
+- name: "playbook para instalar um webserver"
+  hosts: machine02
+  tasks:
+          - name: "instalar o NGINX"
+            become: true
+            apt: name=nginx state=latest update_cache=yes install_recommends=yes

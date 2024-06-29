@@ -1,0 +1,6 @@
+- name: "playbook para atualizar pacotes"
+  hosts: machine02
+  tasks:
+          - name: "atualizar pacotes"
+            become: true
+            apt: update_cache=yes

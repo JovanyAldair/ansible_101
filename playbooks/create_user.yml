@@ -1,0 +1,11 @@
+- name: "playbook para criar usuarios"
+  hosts: all
+  vars:
+    - user_name: "aldair"
+    - server_name: "node01"
+    - conf_file: /opt/app/app.conf
+  tasks:
+    - name: "Criando usuarios"
+      become: true
+      user:
+        name: "{{user_name}}"
