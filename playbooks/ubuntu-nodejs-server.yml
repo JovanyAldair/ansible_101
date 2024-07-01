@@ -1,0 +1,27 @@
+- name: "Playbook to install nodejs and a simple app"
+  hosts: machine02
+  become: true
+  
+  vars:
+    node_apps_location: /usr/local/opt/node
+
+  tasks:
+    - name: "Install nodejs and npm"
+      apt: name=npm state=latest update_cache=yes install_recommends=yes
+
+    - name: "Install Forever to run our application"
+      npm: name=nodemon global=yes state=present
+
+    - name: Ensure nodejs app folder exists
+      file: "path={{node_apps_location}} state=directory"
+
+    - name: Copy folder to the server
+      copy: "src=simple-node-app dest={{node_apps_location}}"
+
+    - name: Install dependecies
+      npm: path={{node_apps_location}}/simple-node-app
+
+    - name: "Start Simple-node-app"
+      command: "nodemon {{node_apps_location}}/simple-node-app/app.js"
+
+
