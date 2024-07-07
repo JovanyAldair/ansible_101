@@ -3,13 +3,13 @@
   become: true
   
   vars:
-    node_apps_location: /usr/local/opt/node
+    node_apps_location: ~/node
 
   tasks:
-    - name: "Install nodejs and npm"
+    - name: Install nodejs and npm
       apt: name=npm state=latest update_cache=yes install_recommends=yes
 
-    - name: "Install Forever to run our application"
+    - name: Install Nodemon to run our application
       npm: name=nodemon global=yes state=present
 
     - name: Ensure nodejs app folder exists
@@ -21,7 +21,7 @@
     - name: Install dependecies
       npm: path={{node_apps_location}}/simple-node-app
 
-    - name: "Start Simple-node-app"
+    - name: Start Simple-node-app
       command: "nodemon {{node_apps_location}}/simple-node-app/app.js"
 
 

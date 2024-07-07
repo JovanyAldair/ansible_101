@@ -7,6 +7,7 @@ Vagrant.configure("2") do |config|
   config.vm.define "master" do |machine_01|
     machine_01.vm.box = "ubuntu/bionic64"
     machine_01.vm.network "private_network", ip: "192.168.57.201"
+    machine_01.vm.provision "shell", path: "provision-master.sh"
     machine_01.vm.hostname = "master"
     machine_01.vm.provider "virtualbox" do |vb|
       vb.name = "master"
