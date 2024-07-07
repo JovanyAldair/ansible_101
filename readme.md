@@ -14,18 +14,23 @@ A máquina **Node01** será o agente ansible onde serao executadas as tarefas or
 Neste projeto contém as seguintes playbooks:
 
 * create_user.ylm
+
 Cria um usuário chamdo **Aldair** usando a variável `user_name`
 
 * update_packs.yml
+
 Atualiza os pacotes do sistema
 
 * loop.yml
+
 Instala uma lista de pacotes 
 
 * webserver.yml
+
 Instala o servidor web NGINX
 
 * ubuntu-nodejs-server.yml
+
 Instala e faz o deploy de uma aplicação node.js
 
 ## Como usar este projecto
